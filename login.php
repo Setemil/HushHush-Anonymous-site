@@ -16,7 +16,7 @@
             <input type="email" name="email" placeholder="Email">
             <label for="password">Password: </label>
             <input type="password" name="password" placeholder="Password">
-            <input type="submit" value="Create Account">
+            <input type="submit" value="Log back in">
         </form>
         <p class="login-link">Dont have an account? <a href="signup.php">Sign Up</a></p>
     </div>

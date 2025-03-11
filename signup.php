@@ -13,7 +13,7 @@
         <form action="signup-process.php" method="post" class="form">
             <h1 class="form-header">Sign Up</h1>
             <label for="password">Nickname: </label>
-            <input type="text" name="nickname" placeholder="Nickname">
+            <input type="text" name="name" placeholder="Nickname">
             <label for="email">Email: </label>
             <input type="email" name="email" placeholder="Email">
             <label for="password">Password: </label>

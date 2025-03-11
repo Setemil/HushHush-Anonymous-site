@@ -53,7 +53,7 @@
   
   /* Main content layout */
   .main-content {
-    padding-top: 100px;
+    padding-top: 40px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -180,6 +180,14 @@
   .start-link:hover::after {
     opacity: 1;
   }
+  footer{
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    opacity: 0;
+    animation: slideDown 0.8s ease-out 0.2s forwards;
+  }
   
   /* Animations */
   @keyframes fadeIn {
@@ -211,6 +219,9 @@
   
   /* Media Queries */
   @media (max-width: 768px) {
+    .main-contentP{
+      padding-top: 50px;
+    }
     #hero {
       flex-direction: column;
       gap: 2rem;

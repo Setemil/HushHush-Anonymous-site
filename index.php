@@ -35,5 +35,8 @@
             </section>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2025 HushHush. All rights reserved.</p>
+    </footer>
 </body>
 </html>
