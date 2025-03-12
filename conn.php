@@ -2,14 +2,14 @@
 require 'vendor/autoload.php';
 
 // Load environment variables from .env file
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(_DIR_);
 $dotenv->load();
 
 // Read database connection details from environment variables
 $host = $_ENV['DB_HOST'];
 $user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASSWORD'];
-$db = $_ENV['DB_NAME'];
+$pass = ($_ENV['DB_PASSWORD'] === 'empty') ? '' : $_ENV['DB_PASSWORD'];
+$db   = $_ENV['DB_NAME'];
 
 // Create connection
 $conn = mysqli_connect($host, $user, $pass, $db);
