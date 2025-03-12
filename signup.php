@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="form-container">
-        <a href="index.php"><i class="fas fa-arrow-left"></i>Back to homepage</a>
+        <a href="main.php"><i class="fas fa-arrow-left"></i>Back to homepage</a>
         <form action="signup-process.php" method="post" class="form">
             <h1 class="form-header">Sign Up</h1>
             <label for="password">Nickname: </label>

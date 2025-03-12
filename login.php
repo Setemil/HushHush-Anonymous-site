@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="form-container">
-        <a href="index.php"><i class="fas fa-arrow-left"></i>Back to homepage</a>
+        <a href="main.php"><i class="fas fa-arrow-left"></i>Back to homepage</a>
         <form action="login-process.php" method="post" class="form">
             <h1 class="form-header">Log In</h1>
             <label for="email">Email: </label>

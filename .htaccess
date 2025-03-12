@@ -1,0 +1,12 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Base directory setting - change if your project is in a subdirectory
+RewriteBase /HushHush/
+
+# Don't apply rules to existing files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route all other requests to index.php
+RewriteRule ^(.*)$ index.php [L,QSA]

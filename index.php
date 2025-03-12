@@ -1,42 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hush Hush</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="header-left">
-            <img src="hush-logo.jpeg" alt="logo" class="logo">
-            <span>Hush Hush</span>
-        </div>
-    </header>
-    <div class="main-content">
-        <div class="hero">
-            <section id="hero">
-                <div class="hero-text">
-                    <h1 class="hero-header">Say whatever you want without consequences</h1>
-                    <p class="hero-text">Dont fear, here we dont say anything in regards to whoever spilled anything to you, send your link to friends to say whatever the fuck they want about you without consequences cus you aint finna know who said it.</p>
-                </div>
-                <div class="hero-picture">
-                    <img src="hero-pic.jpeg" alt="hero-pic" class="hero-pic">
-                </div>
-            </section>
-        </div>
-        <div class="start-container">
-            <section id="start">
-                <div class="start">
-                    <h2 class="start-header">Create your link now!</h2>
-                    <p class="start-text">Click on the button below to create a link which your friends can send you anonymous messages</p>
-                    <a href="signup.php" class="start-link">Create account!</a>
-                </div>
-            </section>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2025 HushHush. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+<?php
+// Simple index.php that acts as a router
+session_start();
+
+// First, check if this is a direct access to index.php
+if (isset($_GET['username'])) {
+    // If username is explicitly provided in GET parameters
+    $username = $_GET['username'];
+    header("Location: messages.php?to=" . urlencode($username));
+    exit;
+}
+
+// Check if this is a pretty URL format (capturing username from path)
+$requestUri = $_SERVER['REQUEST_URI'];
+$basePath = '/HushHush/'; // Update this to match your actual base path
+
+// Extract username from the URL
+if (strpos($requestUri, $basePath) === 0) {
+    $pathAfterBase = substr($requestUri, strlen($basePath));
+    $pathParts = explode('/', $pathAfterBase);
+    
+    // First part after base path should be username
+    if (!empty($pathParts[0])) {
+        $username = urldecode($pathParts[0]);
+        
+        // Check if the username exists in your database
+        include 'conn.php';
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            // Username exists, redirect to send message
+            header("Location: messages.php?to=" . urlencode($username));
+            exit;
+        }
+    }
+}
+
+// If we reach here, either no username was found or it's invalid
+// Check if user is logged in
+if (isset($_SESSION['user_id'])) {
+    // User is logged in, redirect to dashboard
+    header("Location: dashboard.php");
+    exit;
+} else {
+    // User is not logged in, redirect to login
+    header("Location: login.php");
+    exit;
+}
+?>
