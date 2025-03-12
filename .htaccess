@@ -1,10 +1,10 @@
 # Enable URL rewriting
 RewriteEngine On
 
-# Base directory setting - change if your project is in a subdirectory
-RewriteBase /HushHush/
+# Correct base (your app is hosted at root)
+RewriteBase /
 
-# Don't apply rules to existing files or directories
+# Don't apply rules to real files or folders
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
