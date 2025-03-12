@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="header-left">
-            <img src="hush-logo.jpeg" alt="logo" class="logo">
+            <img src="HushHush.jpg" alt="logo" class="logo">
             <span>Hush Hush</span>
         </div>
     </header>

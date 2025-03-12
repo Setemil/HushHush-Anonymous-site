@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['message'])) {
         <?php if (!empty($success)): ?>
             <div class="success">
                 <?php echo $success; ?>
-                <p>Send another message or close this window.</p>
+                <p>Send another message or create your own link <a href="main.php">here.</a></p>
             </div>
         <?php endif; ?>
         

@@ -165,3 +165,7 @@
     -webkit-text-fill-color: transparent;
     margin-top: 0.5rem;
   }
+  .success a{
+    color: white;
+    text-decoration: none;
+  }

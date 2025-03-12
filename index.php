@@ -3,9 +3,9 @@
 session_start();
 
 // First, check if this is a direct access to index.php
-if (isset($_GET['username'])) {
+if (isset($_GET['name'])) {
     // If username is explicitly provided in GET parameters
-    $username = $_GET['username'];
+    $username = $_GET['name'];
     header("Location: messages.php?to=" . urlencode($username));
     exit;
 }
@@ -25,7 +25,7 @@ if (strpos($requestUri, $basePath) === 0) {
         
         // Check if the username exists in your database
         include 'conn.php';
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $conn->prepare("SELECT id FROM users WHERE name = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -40,7 +40,7 @@ if (strpos($requestUri, $basePath) === 0) {
 
 // If we reach here, either no username was found or it's invalid
 // Check if user is logged in
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['id'])) {
     // User is logged in, redirect to dashboard
     header("Location: dashboard.php");
     exit;
